@@ -5,14 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
+    <link rel="stylesheet" href="./pages/index.css" />
   </head>
-  <body>
+  <body class="root">
     <div class="page">
-      <header class="header">
-          <a href="#" class="header__logo"><img src="./images/logo.svg" alt="Логотип Место"></a>
+      <header class="header page__header">
+        <a href="#" class="header__logo"
+          ><img src="./images/logo.svg" alt="Логотип Место"
+        /></a>
       </header>
-      <main></main>
+      <main class="content">
+        <section class="profile page__profile">
+          <div class="profile__info">
+            <img
+              src="./images/avatar.jpg"
+              alt="Аватар"
+              class="profile__avatar"
+            />
+            <div class="profile__user">
+              <h2 class="info__title">Жак-Ив Кусто</h2>
+              <p class="info__subtitle">Исследователь океана</p>
+            </div>
+            <button></button>
+          </div>
+          <button></button>
+        </section>
+      </main>
       <footer></footer>
     </div>
   </body>
