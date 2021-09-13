@@ -8,3 +8,9 @@
     margin-right: 19px;
   }
 }
+
+@media screen and (max-width: 710px) {
+  .page__grid-photo {
+    margin-top: 36px;
+  }
+}
