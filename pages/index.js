@@ -33,8 +33,8 @@ function popupToggle() {
 }
 
 function render() {
-  let titleInfo = document.querySelector(".info-title");
-  let subtitleInfo = document.querySelector(".info-subtitle");
+  let titleInfo = document.querySelector(".profile__title");
+  let subtitleInfo = document.querySelector(".profile__subtitle");
   nameInput.value = titleInfo.textContent;
   jobInput.value = subtitleInfo.textContent;
 }
