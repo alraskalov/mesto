@@ -24,6 +24,7 @@ function formSubmitHandler(evt) {
   // Вставьте новые значения с помощью textContent
   titleInfo.textContent = name;
   subtitleInfo.textContent = job;
+  popup.classList.remove("popup__opened");
 }
 
 function popupToggle() {
