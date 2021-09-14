@@ -19,8 +19,8 @@ function formSubmitHandler(evt) {
   let name = nameInput.value;
   let job = jobInput.value;
   // Выберите элементы, куда должны быть вставлены значения полей
-  let titleInfo = document.querySelector(".info-title");
-  let subtitleInfo = document.querySelector(".info-subtitle");
+  let titleInfo = document.querySelector(".profile__title");
+  let subtitleInfo = document.querySelector(".profile__subtitle");
   // Вставьте новые значения с помощью textContent
   titleInfo.textContent = name;
   subtitleInfo.textContent = job;
