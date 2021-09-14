@@ -9,3 +9,7 @@
   min-width: 21px;
   height: 19px;
 }
+
+.grid-photo__like:active {
+  background-image: url("../../../images/like-black.svg");
+}

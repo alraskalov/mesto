@@ -46,3 +46,8 @@
 @import url('../blocks/popup/__submit-btn/popup__submit-btn.css');
 @import url('../blocks/popup/__close-btn/popup__close-btn.css');
 
+
+@import url('../blocks/animation/__button-submit/animation__button-submit.css');
+@import url('../blocks/animation/__button/animation__button.css');
+@import url('../blocks/animation/__like/animation__like.css');
+

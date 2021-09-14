@@ -1,0 +1,7 @@
+.animation__button-submit {
+  transition: opacity .6s;
+}
+
+.animation__button-submit:hover {
+  opacity: .8;
+}

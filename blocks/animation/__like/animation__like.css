@@ -1,0 +1,7 @@
+.animation__like {
+  transition: opacity .6s;
+}
+
+.animation__like:hover {
+  opacity: .5;
+}

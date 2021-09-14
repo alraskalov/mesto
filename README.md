@@ -14,6 +14,3 @@
 **Проект**
 
 * [Ссылка на проект](https://alraskalov.github.io/mesto/)
-
-
-
