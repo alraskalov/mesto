@@ -19,8 +19,8 @@ function formSubmitHandler(evt) {
   let name = nameInput.value;
   let job = jobInput.value;
   // Выберите элементы, куда должны быть вставлены значения полей
-  let titleInfo = document.querySelector(".info__title");
-  let subtitleInfo = document.querySelector(".info__subtitle");
+  let titleInfo = document.querySelector(".info-title");
+  let subtitleInfo = document.querySelector(".info-subtitle");
   // Вставьте новые значения с помощью textContent
   titleInfo.textContent = name;
   subtitleInfo.textContent = job;
@@ -33,8 +33,8 @@ function popupToggle() {
 }
 
 function render() {
-  let titleInfo = document.querySelector(".info__title");
-  let subtitleInfo = document.querySelector(".info__subtitle");
+  let titleInfo = document.querySelector(".info-title");
+  let subtitleInfo = document.querySelector(".info-subtitle");
   nameInput.value = titleInfo.textContent;
   jobInput.value = subtitleInfo.textContent;
 }
