@@ -35,3 +35,14 @@
 @import url('../blocks/footer/footer.css');
 @import url('../blocks/footer/__copyright/footer__copyright.css');
 
+
+@import url('../blocks/popup/popup.css');
+@import url('../blocks/popup/__container/popup__container.css');
+@import url('../blocks/popup/__opened/popup__opened.css');
+@import url('../blocks/popup/__edit-form/popup__edit-form.css');
+@import url('../blocks/popup/__title/popup__title.css');
+@import url('../blocks/popup/__fieldset/popup__fieldset.css');
+@import url('../blocks/popup/__input-form/popup__input-form.css');
+@import url('../blocks/popup/__submit-btn/popup__submit-btn.css');
+@import url('../blocks/popup/__close-btn/popup__close-btn.css');
+
