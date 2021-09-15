@@ -1,6 +1,6 @@
 const popup = document.querySelector(".popup");
 // Находим форму в DOM
-let formElement = popup.querySelector(".popup__edit-from"); // Воспользуйтесь методом querySelector()
+let formElement = popup.querySelector(".popup__edit-form"); // Воспользуйтесь методом querySelector()
 // Находим поля формы в DOM
 let nameInput = formElement.querySelector(".form-name"); // Воспользуйтесь инструментом .querySelector()
 let jobInput = formElement.querySelector(".form-job"); // Воспользуйтесь инструментом .querySelector()
