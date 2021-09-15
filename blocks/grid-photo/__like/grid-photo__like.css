@@ -1,13 +1,9 @@
 .grid-photo__like {
   border: none;
-  background-color: #fff;
-  background-image: url("../../../images/like.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 50%;
   cursor: pointer;
   min-width: 21px;
   height: 19px;
+  background: url("../../../images/like.svg") no-repeat 50% / contain #fff;
 }
 
 .grid-photo__like:active {
