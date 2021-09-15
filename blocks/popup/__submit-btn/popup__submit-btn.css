@@ -4,7 +4,7 @@
   padding: 14px 0 18px;
   margin: 48px 0 0;
   background: #000;
-  border:none;
+  border: none;
   border-radius: 2px;
   font-style: normal;
   font-weight: 400;
@@ -13,7 +13,6 @@
   color: #fff;
   cursor: pointer;
 }
-
 
 @media screen and (max-width: 560px) {
   .popup__submit-btn {
