@@ -24,11 +24,11 @@ function formSubmitHandler(evt) {
   // Вставьте новые значения с помощью textContent
   titleInfo.textContent = name;
   subtitleInfo.textContent = job;
-  popup.classList.remove("popup__opened");
+  popup.classList.remove("popup_opened");
 }
 
 function popupToggle() {
-  popup.classList.toggle("popup__opened");
+  popup.classList.toggle("popup_opened");
   render();
 }
 
