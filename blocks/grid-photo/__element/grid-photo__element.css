@@ -1,6 +1,6 @@
 .grid-photo__element {
   max-width: 282px;
-  min-height: 360px;
+  /* min-height: 360px; */
   background-color: #fff;
   border-radius: 10px;
   display: flex;

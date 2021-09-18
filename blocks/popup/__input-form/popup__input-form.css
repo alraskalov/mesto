@@ -8,6 +8,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
+  box-sizing: border-box;
 }
 
 .popup__input-form:nth-child(2n) {
@@ -16,7 +17,7 @@
 
 @media screen and (max-width: 560px) {
   .popup__input-form {
-    width: 228px;
+    width: 238px;
   }
 }
 
