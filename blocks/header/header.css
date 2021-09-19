@@ -3,9 +3,3 @@
   border-bottom: 1px solid rgba(84, 84, 84, .7);
   display: flex;
 }
-
-@media screen and (max-width: 630px) {
-  .header {
-    min-height: 56px;
-  }
-}
