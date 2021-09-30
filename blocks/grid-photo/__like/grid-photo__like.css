@@ -6,6 +6,4 @@
   background: url("../../../images/like.svg") no-repeat 50% / contain #fff;
 }
 
-.grid-photo__like:active {
-  background-image: url("../../../images/like-black.svg");
-}
+

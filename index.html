@@ -24,7 +24,7 @@
               <h1 class="profile__title">Жак-Ив Кусто</h1>
               <p class="profile__subtitle">Исследователь океана</p>
               <button
-                class="profile__edit-button popup-open animation-button"
+                class="profile__edit-button animation-button"
                 type="button"
               ></button>
             </div>
@@ -35,96 +35,13 @@
           ></button>
         </section>
         <section class="grid-photo page__grid-photo">
-          <div class="grid-photo__element">
-            <img
-              src="./images/karachevsk.jpg"
-              class="grid-photo__image"
-              alt="Карачевск"
-            />
-            <div class="grid-photo__description">
-              <h2 class="grid-photo__title">Карачаевск</h2>
-              <button
-                type="button"
-                class="grid-photo__like animation-like"
-              ></button>
-            </div>
-          </div>
-          <div class="grid-photo__element">
-            <img
-              src="./images/elbrus.jpg"
-              class="grid-photo__image"
-              alt="Гора Эльбрус"
-            />
-            <div class="grid-photo__description">
-              <h2 class="grid-photo__title">Гора Эльбрус</h2>
-              <button
-                type="button"
-                class="grid-photo__like animation-like"
-              ></button>
-            </div>
-          </div>
-          <div class="grid-photo__element">
-            <img
-              src="./images/dombai.jpg"
-              class="grid-photo__image"
-              alt="Домбай"
-            />
-            <div class="grid-photo__description">
-              <h2 class="grid-photo__title">Домбай</h2>
-              <button
-                type="button"
-                class="grid-photo__like animation-like"
-              ></button>
-            </div>
-          </div>
-          <div class="grid-photo__element">
-            <img
-              src="./images/elbrus.jpg"
-              class="grid-photo__image"
-              alt="Гора Эльбрус"
-            />
-            <div class="grid-photo__description">
-              <h2 class="grid-photo__title">Гора Эльбрус</h2>
-              <button
-                type="button"
-                class="grid-photo__like animation-like"
-              ></button>
-            </div>
-          </div>
-          <div class="grid-photo__element">
-            <img
-              src="./images/dombai.jpg"
-              class="grid-photo__image"
-              alt="Домбай"
-            />
-            <div class="grid-photo__description">
-              <h2 class="grid-photo__title">Домбай</h2>
-              <button
-                type="button"
-                class="grid-photo__like animation-like"
-              ></button>
-            </div>
-          </div>
-          <div class="grid-photo__element">
-            <img
-              src="./images/karachevsk.jpg"
-              class="grid-photo__image"
-              alt="Карачаево-Черкесская Республика"
-            />
-            <div class="grid-photo__description">
-              <h2 class="grid-photo__title">Карачаево-Черкесская Республика</h2>
-              <button
-                type="button"
-                class="grid-photo__like animation-like"
-              ></button>
-            </div>
-          </div>
+
         </section>
       </main>
       <footer class="footer page__footer">
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
       </footer>
-      <div class="popup">
+      <div class="popup popup-edit">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
           <form name="edit" class="popup__edit-form">
@@ -157,7 +74,74 @@
           </form>
         </div>
       </div>
+      <div class="popup popup-add">
+        <div class="popup__container">
+          <h2 class="popup__title">Новое место</h2>
+          <form name="add" class="popup__edit-form">
+            <fieldset class="popup__fieldset">
+              <input
+                class="popup__input-form"
+                id="imageName"
+                type="text"
+                name="imageName"
+                placeholder="Название"
+                required
+              />
+              <input
+                class="popup__input-form"
+                id="imageLink"
+                type="text"
+                name="imageLink"
+                placeholder="Ссылка на картинку"
+                required
+              />
+              <button
+                type="submit"
+                class="popup__submit-btn animation-button-submit"
+              >
+                Создать
+              </button>
+            </fieldset>
+            <button
+              type="button"
+              class="popup__close-btn animation-button"
+            ></button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup-image">
+        <div class="popup__container popup__container-image">
+          <figure class="popup__figure">
+            <img class="popup__image">
+            <figcaption class="popup__subtitle"></figcaption>
+          </figure>
+            <button
+              type="button"
+              class="popup__close-btn animation-button"
+            ></button>
+        </div>
+      </div>
     </div>
+
+    <template id="grid-photo">
+      <div class="grid-photo__element">
+        <img
+          class="grid-photo__image"
+        />
+        <button
+          type="button"
+          class="grid-photo__delete-button animation-button"
+        ></button>
+        <div class="grid-photo__description">
+          <h2 class="grid-photo__title"></h2>
+          <button
+            type="button"
+            class="grid-photo__like animation-like"
+          ></button>
+        </div>
+      </div>
+    </template>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
