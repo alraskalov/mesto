@@ -32,12 +32,15 @@ const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 
 const popupEdit = document.querySelector(".popup-edit");
-let nameInput = document.querySelector("#userName");
-let jobInput = document.querySelector("#userJob");
-let userName = document.querySelector(".profile__title");
-let userProfession = document.querySelector(".profile__subtitle");
+const nameInput = document.querySelector("#userName");
+const jobInput = document.querySelector("#userJob");
+const userName = document.querySelector(".profile__title");
+const userProfession = document.querySelector(".profile__subtitle");
 
 const popupAdd = document.querySelector(".popup-add");
+
+const gridImageName = document.querySelector("#imageName");
+const gridImageLink = document.querySelector("#imageLink");
 
 const popupImage = document.querySelector(".popup-image");
 const popupImageLink = popupImage.querySelector(".popup__image");
@@ -49,10 +52,8 @@ function switchPopup(popup) {
 
 function openImage(currentImage) {
   currentImage.addEventListener("click", function (e) {
-    popupImageLink.src = e.target.src;
-    popupImageText.textContent = e.target.closest(
-      ".grid-photo__element"
-    ).textContent;
+    popupImageLink.src = currentImage.src;
+    popupImageText.textContent = currentImage.alt;
     switchPopup(popupImage);
   });
 }
@@ -62,8 +63,9 @@ function renderGridPhoto(gridPhotoName, gridPhotoLink) {
   const gridPhotoElement = gridPhotoTemplate
     .querySelector(".grid-photo__element")
     .cloneNode(true);
-  gridPhotoElement.querySelector(".grid-photo__image").src = gridPhotoLink;
-  gridPhotoElement.querySelector(".grid-photo__image").alt = gridPhotoName;
+  const currentImage = gridPhotoElement.querySelector(".grid-photo__image");
+  currentImage.src = gridPhotoLink;
+  currentImage.alt = gridPhotoName;
   gridPhotoElement.querySelector(".grid-photo__title").textContent =
     gridPhotoName;
 
@@ -78,7 +80,6 @@ function renderGridPhoto(gridPhotoName, gridPhotoLink) {
     e.target.closest(".grid-photo__element").remove()
   );
 
-  const currentImage = gridPhotoElement.querySelector(".grid-photo__image");
   openImage(currentImage);
 
   return gridPhotoElement;
@@ -87,7 +88,7 @@ function renderGridPhoto(gridPhotoName, gridPhotoLink) {
 function handlerCloseButtonClick(e) {
   const currentTarget = e.target;
   if (currentTarget.classList.contains("popup__close-btn")) {
-    const currentPopup = document.querySelector(".popup_opened");
+    const currentPopup = currentTarget.closest(".popup_opened");
     if (currentPopup) {
       switchPopup(currentPopup);
     }
@@ -105,12 +106,13 @@ function handlerFormSubmit(e) {
 function handlerFormAdd(e) {
   e.preventDefault();
   const data = {
-    name: document.querySelector("#imageName").value,
-    link: document.querySelector("#imageLink").value,
+    name: gridImageName.value,
+    link: gridImageLink.value,
   };
 
   gridPhoto.prepend(renderGridPhoto(data.name, data.link));
-
+  gridImageName.value = "";
+  gridImageLink.value = "";
   switchPopup(popupAdd);
 }
 
