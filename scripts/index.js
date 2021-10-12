@@ -32,29 +32,56 @@ const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
 
 const popupEdit = document.querySelector(".popup-edit");
-const nameInput = document.querySelector("#userName");
-const jobInput = document.querySelector("#userJob");
+const nameInput = document.querySelector("#user-name");
+const jobInput = document.querySelector("#user-job");
 const userName = document.querySelector(".profile__title");
 const userProfession = document.querySelector(".profile__subtitle");
 
 const popupAdd = document.querySelector(".popup-add");
 
-const gridImageName = document.querySelector("#imageName");
-const gridImageLink = document.querySelector("#imageLink");
+const gridImageName = document.querySelector("#image-name");
+const gridImageLink = document.querySelector("#image-link");
 
 const popupImage = document.querySelector(".popup-image");
 const popupImageLink = popupImage.querySelector(".popup__image");
 const popupImageText = popupImage.querySelector(".popup__subtitle");
 
-function switchPopup(popup) {
-  popup.classList.toggle("popup_opened");
+function openPopup(popUp) {
+  popUp.classList.add("popup_opened");
+  root.addEventListener("click", handlerClosePopupClick);
+  document.addEventListener("keydown", closePopupByKey);
+}
+
+function closePopupByKey(evt) {
+  if (evt.key === "Escape") {
+    popupClose();
+  }
+}
+
+function handlerClosePopupClick(evt) {
+  const target = evt.target;
+  if (
+    target.classList.contains("popup__close-btn") ||
+    target.classList.contains("popup")
+  ) {
+    popupClose();
+  }
+}
+
+function popupClose() {
+  const activePopup = document.querySelector(".popup_opened");
+  if (activePopup) {
+    activePopup.classList.remove("popup_opened");
+    root.removeEventListener("click", handlerClosePopupClick);
+    document.removeEventListener("keydown", closePopupByKey);
+  }
 }
 
 function openImage(currentImage) {
   currentImage.addEventListener("click", function (e) {
     popupImageLink.src = currentImage.src;
     popupImageText.textContent = currentImage.alt;
-    switchPopup(popupImage);
+    openPopup(popupImage);
   });
 }
 
@@ -85,22 +112,12 @@ function renderGridPhoto(gridPhotoName, gridPhotoLink) {
   return gridPhotoElement;
 }
 
-function handlerCloseButtonClick(e) {
-  const currentTarget = e.target;
-  if (currentTarget.classList.contains("popup__close-btn")) {
-    const currentPopup = currentTarget.closest(".popup_opened");
-    if (currentPopup) {
-      switchPopup(currentPopup);
-    }
-  }
-}
-
 function handlerFormSubmit(e) {
   e.preventDefault();
 
   userName.textContent = nameInput.value;
   userProfession.textContent = jobInput.value;
-  switchPopup(popupEdit);
+  openPopup(popupEdit);
 }
 
 function handlerFormAdd(e) {
@@ -113,20 +130,20 @@ function handlerFormAdd(e) {
   gridPhoto.prepend(renderGridPhoto(data.name, data.link));
   gridImageName.value = "";
   gridImageLink.value = "";
-  switchPopup(popupAdd);
+  openPopup(popupAdd);
 }
 
-root.addEventListener("click", handlerCloseButtonClick);
 popupEdit.addEventListener("submit", handlerFormSubmit);
 popupAdd.addEventListener("submit", handlerFormAdd);
 
 editButton.addEventListener("click", function () {
   nameInput.value = userName.textContent;
   jobInput.value = userProfession.textContent;
-  switchPopup(popupEdit);
+  openPopup(popupEdit);
 });
+
 addButton.addEventListener("click", function () {
-  switchPopup(popupAdd);
+  openPopup(popupAdd);
 });
 
 initialCards.forEach((elem) => {

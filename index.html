@@ -34,9 +34,7 @@
             class="profile__add-button animation-button"
           ></button>
         </section>
-        <section class="grid-photo page__grid-photo">
-
-        </section>
+        <section class="grid-photo page__grid-photo"></section>
       </main>
       <footer class="footer page__footer">
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
@@ -44,25 +42,35 @@
       <div class="popup popup-edit">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <form name="edit" class="popup__edit-form">
+          <form name="edit" class="popup__form" novalidate>
             <fieldset class="popup__fieldset">
-              <input
-                class="popup__input-form"
-                id="userName"
-                type="text"
-                name="userName"
-                required
-              />
-              <input
-                class="popup__input-form"
-                id="userJob"
-                type="text"
-                name="userJob"
-                required
-              />
+              <label class="popup__label">
+                <input
+                  class="popup__input"
+                  id="user-name"
+                  type="text"
+                  name="userName"
+                  minlength="2"
+                  maxlength="40"
+                  required
+                />
+                <span class="popup__input-error user-name-error"></span>
+              </label>
+              <label class="popup__label">
+                <input
+                  class="popup__input"
+                  id="user-job"
+                  type="text"
+                  name="userJob"
+                  minlength="2"
+                  maxlength="200"
+                  required
+                />
+                <span class="popup__input-error user-job-error"></span>
+              </label>
               <button
                 type="submit"
-                class="popup__submit-btn animation-button-submit"
+                class="popup__submit-btn popup__submit-btn_disabled"
               >
                 Сохранить
               </button>
@@ -77,30 +85,33 @@
       <div class="popup popup-add">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
-          <form name="add" class="popup__edit-form">
+          <form name="add" class="popup__form" novalidate>
             <fieldset class="popup__fieldset">
-              <input
-                class="popup__input-form"
-                id="imageName"
-                type="text"
-                name="imageName"
-                placeholder="Название"
-                required
-              />
-              <input
-                class="popup__input-form"
-                id="imageLink"
-                type="text"
-                name="imageLink"
-                placeholder="Ссылка на картинку"
-                required
-              />
-              <button
-                type="submit"
-                class="popup__submit-btn animation-button-submit"
-              >
-                Создать
-              </button>
+              <label class="popup__label">
+                <input
+                  class="popup__input"
+                  id="image-name"
+                  type="text"
+                  name="imageName"
+                  placeholder="Название"
+                  minlength="2"
+                  maxlength="30"
+                  required
+                />
+                <span class="popup__input-error image-name-error"></span>
+              </label>
+              <label class="popup__label">
+                <input
+                  class="popup__input"
+                  id="image-link"
+                  type="url"
+                  name="imageLink"
+                  placeholder="Ссылка на картинку"
+                  required
+                />
+                <span class="popup__input-error image-link-error"></span>
+              </label>
+              <button type="submit" class="popup__submit-btn">Создать</button>
             </fieldset>
             <button
               type="button"
@@ -112,22 +123,20 @@
       <div class="popup popup-image">
         <div class="popup__container popup__container-image">
           <figure class="popup__figure">
-            <img class="popup__image">
+            <img class="popup__image" />
             <figcaption class="popup__subtitle"></figcaption>
           </figure>
-            <button
-              type="button"
-              class="popup__close-btn animation-button"
-            ></button>
+          <button
+            type="button"
+            class="popup__close-btn animation-button"
+          ></button>
         </div>
       </div>
     </div>
 
     <template id="grid-photo">
       <div class="grid-photo__element">
-        <img
-          class="grid-photo__image"
-        />
+        <img class="grid-photo__image" />
         <button
           type="button"
           class="grid-photo__delete-button animation-button"
@@ -142,6 +151,7 @@
       </div>
     </template>
 
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </body>
 </html>
