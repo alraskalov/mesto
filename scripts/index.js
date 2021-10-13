@@ -23,7 +23,6 @@ function openPopup(popUp) {
   popUp.classList.add("popup_opened");
   root.addEventListener("click", handlerClosePopupClick);
   document.addEventListener("keydown", closePopupByKey);
-  buttonDisabled();
 }
 
 function closePopupByKey(evt) {
@@ -126,6 +125,7 @@ editButton.addEventListener("click", function () {
 
 addButton.addEventListener("click", function () {
   openPopup(popupAdd);
+  buttonDisabled();
 });
 
 initialCards.forEach((elem) => {
