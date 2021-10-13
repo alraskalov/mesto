@@ -1,3 +1,12 @@
+const config = {
+  formSelector: ".popup__form",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__submit-btn",
+  inactiveButtonClass: "popup__submit-btn_disabled",
+  inputErrorClass: "popup__input_type_error",
+  animationButtonSumbit: "animation-button-submit",
+};
+
 const enableValidation = (config) => {
   const formLists = Array.from(document.querySelectorAll(config.formSelector));
   formLists.forEach((formElement) => {
@@ -11,7 +20,6 @@ const setEventListeners = (formElement, config) => {
   );
 
   const submitButton = formElement.querySelector(config.submitButtonSelector);
-  toggleButtonState(inputLists, submitButton, config);
   inputLists.forEach((inputElement) => {
     inputElement.addEventListener("input", () => {
       checkInputValidity(formElement, inputElement, config);
@@ -34,11 +42,11 @@ const toggleButtonState = (inputList, buttonElement, config) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(config.inactiveButtonClass);
     buttonElement.disabled = "disabled";
-    buttonElement.classList.remove("animation-button-submit");
+    buttonElement.classList.remove(config.animationButtonSumbit);
   } else {
     buttonElement.classList.remove(config.inactiveButtonClass);
     buttonElement.disabled = false;
-    buttonElement.classList.add("animation-button-submit");
+    buttonElement.classList.add(config.animationButtonSumbit);
   }
 };
 
@@ -46,13 +54,11 @@ const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(config.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("form__input-error_active");
 };
 
 const hideInputError = (formElement, inputElement, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(config.inputErrorClass);
-  errorElement.classList.remove("form__input-error_active");
   errorElement.textContent = "";
 };
 
@@ -69,11 +75,4 @@ const checkInputValidity = (formElement, inputElement, config) => {
   }
 };
 
-enableValidation({
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-btn",
-  inactiveButtonClass: "popup__submit-btn_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__error_visible",
-});
+enableValidation(config);

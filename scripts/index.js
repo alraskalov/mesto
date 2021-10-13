@@ -50,6 +50,7 @@ function openPopup(popUp) {
   popUp.classList.add("popup_opened");
   root.addEventListener("click", handlerClosePopupClick);
   document.addEventListener("keydown", closePopupByKey);
+  buttonDisabled();
 }
 
 function closePopupByKey(evt) {
@@ -85,6 +86,14 @@ function openImage(currentImage) {
   });
 }
 
+const buttonDisabled = () => {
+  const activePopup = document.querySelector(".popup_opened");
+  const button = activePopup.querySelector(config.submitButtonSelector)
+  button.classList.add(config.inactiveButtonClass);
+  button.disabled = "disabled";
+  button.classList.remove(config.animationButtonSumbit);
+}
+
 function renderGridPhoto(gridPhotoName, gridPhotoLink) {
   const gridPhotoTemplate = document.querySelector("#grid-photo").content;
   const gridPhotoElement = gridPhotoTemplate
@@ -117,7 +126,7 @@ function handlerFormSubmit(e) {
 
   userName.textContent = nameInput.value;
   userProfession.textContent = jobInput.value;
-  openPopup(popupEdit);
+  popupClose();
 }
 
 function handlerFormAdd(e) {
@@ -130,7 +139,7 @@ function handlerFormAdd(e) {
   gridPhoto.prepend(renderGridPhoto(data.name, data.link));
   gridImageName.value = "";
   gridImageLink.value = "";
-  openPopup(popupAdd);
+  popupClose();
 }
 
 popupEdit.addEventListener("submit", handlerFormSubmit);
