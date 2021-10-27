@@ -1,8 +1,11 @@
-import { initialCards } from "./data.js";
+import { initialCards, config } from "./data.js";
 import Card from "./Card.js";
+import FormValidator from "./FormValidator.js";
 
 const root = document.querySelector(".root");
 const gridPhoto = document.querySelector(".grid-photo");
+
+const formLists = Array.from(document.querySelectorAll(config.formSelector));
 
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
@@ -108,3 +111,7 @@ initialCards.forEach((cardData) => {
   const card = new Card(cardData, "#grid-photo", openImage).generateCard();
   gridPhoto.prepend(card);
 });
+
+formLists.forEach(formElement => {
+  const form = new FormValidator(config, formElement).enableValidation();
+})
