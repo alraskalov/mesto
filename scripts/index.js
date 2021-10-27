@@ -1,3 +1,6 @@
+import { initialCards } from "./data.js";
+import Card from "./Card.js";
+
 const root = document.querySelector(".root");
 const gridPhoto = document.querySelector(".grid-photo");
 
@@ -51,47 +54,18 @@ function popupClose() {
 }
 
 function openImage(currentImage) {
-  currentImage.addEventListener("click", function (e) {
-    popupImageLink.src = currentImage.src;
-    popupImageText.textContent = currentImage.alt;
-    openPopup(popupImage);
-  });
+  popupImageLink.src = currentImage.src;
+  popupImageText.textContent = currentImage.alt;
+  openPopup(popupImage);
 }
 
 const buttonDisabled = () => {
   const activePopup = document.querySelector(".popup_opened");
-  const button = activePopup.querySelector(config.submitButtonSelector)
+  const button = activePopup.querySelector(config.submitButtonSelector);
   button.classList.add(config.inactiveButtonClass);
   button.disabled = "disabled";
   button.classList.remove(config.animationButtonSumbit);
-}
-
-function renderGridPhoto(gridPhotoName, gridPhotoLink) {
-  const gridPhotoTemplate = document.querySelector("#grid-photo").content;
-  const gridPhotoElement = gridPhotoTemplate
-    .querySelector(".grid-photo__element")
-    .cloneNode(true);
-  const currentImage = gridPhotoElement.querySelector(".grid-photo__image");
-  currentImage.src = gridPhotoLink;
-  currentImage.alt = gridPhotoName;
-  gridPhotoElement.querySelector(".grid-photo__title").textContent =
-    gridPhotoName;
-
-  const likeButton = gridPhotoElement.querySelector(".grid-photo__like");
-  likeButton.addEventListener("click", (e) =>
-    e.target.classList.toggle("grid-photo__like_active")
-  );
-  const deleteButton = gridPhotoElement.querySelector(
-    ".grid-photo__delete-button"
-  );
-  deleteButton.addEventListener("click", (e) =>
-    e.target.closest(".grid-photo__element").remove()
-  );
-
-  openImage(currentImage);
-
-  return gridPhotoElement;
-}
+};
 
 function handlerFormSubmit(e) {
   e.preventDefault();
@@ -108,7 +82,9 @@ function handlerFormAdd(e) {
     link: gridImageLink.value,
   };
 
-  gridPhoto.prepend(renderGridPhoto(data.name, data.link));
+  const card = new Card(data, "#grid-photo", openImage).generateCard();
+
+  gridPhoto.prepend(card);
   gridImageName.value = "";
   gridImageLink.value = "";
   popupClose();
@@ -128,6 +104,7 @@ addButton.addEventListener("click", function () {
   buttonDisabled();
 });
 
-initialCards.forEach((elem) => {
-  gridPhoto.prepend(renderGridPhoto(elem.name, elem.link));
+initialCards.forEach((cardData) => {
+  const card = new Card(cardData, "#grid-photo", openImage).generateCard();
+  gridPhoto.prepend(card);
 });
