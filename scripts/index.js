@@ -5,7 +5,9 @@ import FormValidator from "./FormValidator.js";
 const root = document.querySelector(".root");
 const gridPhoto = document.querySelector(".grid-photo");
 
-const formLists = Array.from(document.querySelectorAll(config.formSelector));
+const formAddCard = document.querySelector(".form-add")
+const formEditProfile = document.querySelector(".form-edit")
+
 
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
@@ -25,8 +27,16 @@ const popupImage = document.querySelector(".popup-image");
 const popupImageLink = popupImage.querySelector(".popup__image");
 const popupImageText = popupImage.querySelector(".popup__subtitle");
 
-function openPopup(popUp) {
-  popUp.classList.add("popup_opened");
+const formProfileObject = new FormValidator(config, formEditProfile).enableValidation();
+const formCardObject = new FormValidator(config, formAddCard).enableValidation();
+
+const createCard = (data) => {
+  const card = new Card(data, "#grid-photo", openImage).generateCard();
+  gridPhoto.prepend(card);
+}
+
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
   root.addEventListener("click", handlerClosePopupClick);
   document.addEventListener("keydown", closePopupByKey);
 }
@@ -58,6 +68,7 @@ function popupClose() {
 
 function openImage(currentImage) {
   popupImageLink.src = currentImage.src;
+  popupImageLink.alt = currentImage.alt;
   popupImageText.textContent = currentImage.alt;
   openPopup(popupImage);
 }
@@ -66,11 +77,11 @@ const buttonDisabled = () => {
   const activePopup = document.querySelector(".popup_opened");
   const button = activePopup.querySelector(config.submitButtonSelector);
   button.classList.add(config.inactiveButtonClass);
-  button.disabled = "disabled";
+  button.disabled = true;
   button.classList.remove(config.animationButtonSumbit);
 };
 
-function handlerFormSubmit(e) {
+function handlerFormEditProfile(e) {
   e.preventDefault();
 
   userName.textContent = nameInput.value;
@@ -78,23 +89,21 @@ function handlerFormSubmit(e) {
   popupClose();
 }
 
-function handlerFormAdd(e) {
+function handlerFormAddCard(e) {
   e.preventDefault();
   const data = {
     name: gridImageName.value,
     link: gridImageLink.value,
   };
 
-  const card = new Card(data, "#grid-photo", openImage).generateCard();
-
-  gridPhoto.prepend(card);
+  createCard(data);
   gridImageName.value = "";
   gridImageLink.value = "";
   popupClose();
 }
 
-popupEdit.addEventListener("submit", handlerFormSubmit);
-popupAdd.addEventListener("submit", handlerFormAdd);
+popupEdit.addEventListener("submit", handlerFormEditProfile);
+popupAdd.addEventListener("submit", handlerFormAddCard);
 
 editButton.addEventListener("click", function () {
   nameInput.value = userName.textContent;
@@ -104,14 +113,10 @@ editButton.addEventListener("click", function () {
 
 addButton.addEventListener("click", function () {
   openPopup(popupAdd);
-  buttonDisabled();
 });
 
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#grid-photo", openImage).generateCard();
-  gridPhoto.prepend(card);
+  createCard(cardData);
 });
 
-formLists.forEach(formElement => {
-  const form = new FormValidator(config, formElement).enableValidation();
-})
+
