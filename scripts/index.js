@@ -5,9 +5,8 @@ import FormValidator from "./FormValidator.js";
 const root = document.querySelector(".root");
 const gridPhoto = document.querySelector(".grid-photo");
 
-const formAddCard = document.querySelector(".form-add")
-const formEditProfile = document.querySelector(".form-edit")
-
+const formAddCard = document.querySelector(".form-add");
+const formEditProfile = document.querySelector(".form-edit");
 
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
@@ -27,13 +26,15 @@ const popupImage = document.querySelector(".popup-image");
 const popupImageLink = popupImage.querySelector(".popup__image");
 const popupImageText = popupImage.querySelector(".popup__subtitle");
 
-const formProfileObject = new FormValidator(config, formEditProfile).enableValidation();
-const formCardObject = new FormValidator(config, formAddCard).enableValidation();
+const formProfileObject = new FormValidator(config, formEditProfile);
+const formProfileEnableValidation = formProfileObject.enableValidation();
+const formCardObject = new FormValidator(config, formAddCard);
+const formCardEnableValidation = formCardObject.enableValidation();
 
 const createCard = (data) => {
   const card = new Card(data, "#grid-photo", openImage).generateCard();
   gridPhoto.prepend(card);
-}
+};
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -108,15 +109,16 @@ popupAdd.addEventListener("submit", handlerFormAddCard);
 editButton.addEventListener("click", function () {
   nameInput.value = userName.textContent;
   jobInput.value = userProfession.textContent;
+  formProfileObject.toggleButtonState();
   openPopup(popupEdit);
 });
 
 addButton.addEventListener("click", function () {
+  formCardObject.toggleButtonState();
+  formCardObject.clearValidation();
   openPopup(popupAdd);
 });
 
 initialCards.forEach((cardData) => {
   createCard(cardData);
 });
-
-

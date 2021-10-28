@@ -1,6 +1,6 @@
 export default class Card {
   constructor(initialCards, cardSelector, callbackOpenCardImage) {
-    this._initialCards = initialCards;
+    this._data = initialCards;
     this._cardSelector = cardSelector;
     this._callbackOpenCardImage = callbackOpenCardImage;
   }
@@ -18,12 +18,11 @@ export default class Card {
     this._element = this._getTemplate();
     this._setEventListeners();
 
-    this._element.querySelector(".grid-photo__image").src =
-      this._initialCards.link;
-    this._element.querySelector(".grid-photo__image").alt =
-      this._initialCards.name;
+    const cardImage = this._element.querySelector(".grid-photo__image");
+    cardImage.src = this._data.link;
+    cardImage.alt = this._data.name;
     this._element.querySelector(".grid-photo__title").textContent =
-      this._initialCards.name;
+      this._data.name;
 
     return this._element;
   }
@@ -36,6 +35,7 @@ export default class Card {
 
   _deleteCard() {
     this._element.remove();
+    this._element = null
   }
 
   _handleOpenImage() {
