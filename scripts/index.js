@@ -10,6 +10,7 @@ const formEditProfile = document.querySelector(".form-edit");
 
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
+const closeButton = document.querySelector(".popup__close-btn");
 
 const popupEdit = document.querySelector(".popup-edit");
 const nameInput = document.querySelector("#user-name");
@@ -38,33 +39,31 @@ const createCard = (data) => {
 
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  root.addEventListener("click", handlerClosePopupClick);
   document.addEventListener("keydown", closePopupByKey);
 }
 
 function closePopupByKey(evt) {
-  if (evt.key === "Escape") {
-    popupClose();
+  const activePopup = document.querySelector(".popup_opened");
+  if (activePopup && evt.key === "Escape") {
+    popupClose(activePopup);
   }
 }
 
 function handlerClosePopupClick(evt) {
   const target = evt.target;
+  const activePopup = document.querySelector(".popup_opened");
   if (
-    target.classList.contains("popup__close-btn") ||
-    target.classList.contains("popup")
+    activePopup &&
+    (target.classList.contains("popup__close-btn") ||
+      target.classList.contains("popup"))
   ) {
-    popupClose();
+    popupClose(activePopup);
   }
 }
 
-function popupClose() {
-  const activePopup = document.querySelector(".popup_opened");
-  if (activePopup) {
-    activePopup.classList.remove("popup_opened");
-    root.removeEventListener("click", handlerClosePopupClick);
-    document.removeEventListener("keydown", closePopupByKey);
-  }
+function popupClose(popup) {
+  popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", closePopupByKey);
 }
 
 function openImage(currentImage) {
@@ -74,20 +73,12 @@ function openImage(currentImage) {
   openPopup(popupImage);
 }
 
-const buttonDisabled = () => {
-  const activePopup = document.querySelector(".popup_opened");
-  const button = activePopup.querySelector(config.submitButtonSelector);
-  button.classList.add(config.inactiveButtonClass);
-  button.disabled = true;
-  button.classList.remove(config.animationButtonSumbit);
-};
-
 function handlerFormEditProfile(e) {
   e.preventDefault();
 
   userName.textContent = nameInput.value;
   userProfession.textContent = jobInput.value;
-  popupClose();
+  popupClose(popupEdit);
 }
 
 function handlerFormAddCard(e) {
@@ -100,11 +91,15 @@ function handlerFormAddCard(e) {
   createCard(data);
   gridImageName.value = "";
   gridImageLink.value = "";
-  popupClose();
+  popupClose(popupAdd);
 }
 
 popupEdit.addEventListener("submit", handlerFormEditProfile);
 popupAdd.addEventListener("submit", handlerFormAddCard);
+
+popupEdit.addEventListener("click", handlerClosePopupClick);
+popupAdd.addEventListener("click", handlerClosePopupClick);
+closeButton.addEventListener("click", handlerClosePopupClick);
 
 editButton.addEventListener("click", function () {
   nameInput.value = userName.textContent;
