@@ -51,6 +51,7 @@ function closePopupByKey(evt) {
 
 function handlerClosePopupClick(evt) {
   const target = evt.target;
+  const activePopup = document.querySelector(".popup_opened");
   if (
     target.classList.contains("popup__close-btn") ||
     target.classList.contains("popup")
