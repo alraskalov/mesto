@@ -9,7 +9,6 @@ const formEditProfile = document.querySelector(".form-edit");
 
 const editButton = document.querySelector(".profile__edit-button");
 const addButton = document.querySelector(".profile__add-button");
-const closeButton = document.querySelector(".popup__close-btn");
 
 const popupEdit = document.querySelector(".popup-edit");
 const nameInput = document.querySelector("#user-name");
