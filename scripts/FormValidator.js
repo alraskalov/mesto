@@ -35,12 +35,8 @@ export default class FormValidator {
 
   clearValidation() {
     this._inputLists.forEach((inputElement) => {
-      const errorElement = this._formElement.querySelector(
-        `.${inputElement.id}-error`
-      );
+      this._hideInputError(inputElement);
       inputElement.value = "";
-      inputElement.classList.remove(this._config.inputErrorClass);
-      errorElement.textContent = "";
     });
   }
 

@@ -2,7 +2,6 @@ import { initialCards, config } from "./data.js";
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 
-const root = document.querySelector(".root");
 const gridPhoto = document.querySelector(".grid-photo");
 
 const formAddCard = document.querySelector(".form-add");
@@ -28,9 +27,10 @@ const popupImageLink = popupImage.querySelector(".popup__image");
 const popupImageText = popupImage.querySelector(".popup__subtitle");
 
 const formProfileObject = new FormValidator(config, formEditProfile);
-const formProfileEnableValidation = formProfileObject.enableValidation();
 const formCardObject = new FormValidator(config, formAddCard);
-const formCardEnableValidation = formCardObject.enableValidation();
+
+formProfileObject.enableValidation();
+formCardObject.enableValidation();
 
 const createCard = (data) => {
   const card = new Card(data, "#grid-photo", openImage).generateCard();
@@ -53,9 +53,8 @@ function handlerClosePopupClick(evt) {
   const target = evt.target;
   const activePopup = document.querySelector(".popup_opened");
   if (
-    activePopup &&
-    (target.classList.contains("popup__close-btn") ||
-      target.classList.contains("popup"))
+    target.classList.contains("popup__close-btn") ||
+    target.classList.contains("popup")
   ) {
     popupClose(activePopup);
   }
@@ -99,7 +98,7 @@ popupAdd.addEventListener("submit", handlerFormAddCard);
 
 popupEdit.addEventListener("click", handlerClosePopupClick);
 popupAdd.addEventListener("click", handlerClosePopupClick);
-closeButton.addEventListener("click", handlerClosePopupClick);
+popupImage.addEventListener("click", handlerClosePopupClick);
 
 editButton.addEventListener("click", function () {
   nameInput.value = userName.textContent;
