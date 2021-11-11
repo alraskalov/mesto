@@ -11,6 +11,7 @@
 * JS
 * BEM
 * OOP
+* WEBPACK
 
 **Проект**
 
