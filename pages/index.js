@@ -30,6 +30,7 @@ formCardObject.enableValidation();
 
 const popupCardObject = new PopupWithForm(popupAdd, {
   handleFormSubmit: (formData) => {
+    console.log(formData);
     const card = new Card(
       {
         data: formData,
@@ -84,6 +85,10 @@ const cardList = new Section(
 );
 
 cardList.addItem();
+
+popupCardObject.setEventListeners();
+popupProfileObject.setEventListeners();
+popupImageObject.setEventListeners();
 
 editButton.addEventListener("click", function () {
   nameInput.value = userInfo.getUserInfo().userName;
