@@ -5,18 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css" />
+    <!-- <link rel="stylesheet" href="./pages/index.css" /> -->
   </head>
   <body class="root">
     <div class="page">
       <header class="header page__header">
-        <img class="header__logo" src="./images/logo.svg" alt="Логотип Место" />
+        <img
+          class="header__logo"
+          src="<%=require('./images/logo.svg')%>"
+          alt="Логотип Место"
+        />
       </header>
       <main class="content">
         <section class="profile page__profile">
           <div class="profile__info">
             <img
-              src="./images/avatar.jpg"
+              src="<%=require('./images/avatar.jpg')%>"
               alt="Аватар"
               class="profile__avatar"
             />
@@ -70,12 +74,7 @@
                 />
                 <span class="popup__input-error user-job-error"></span>
               </label>
-              <button
-                type="submit"
-                class="popup__submit-btn"
-              >
-                Сохранить
-              </button>
+              <button type="submit" class="popup__submit-btn">Сохранить</button>
             </fieldset>
             <button
               type="button"
@@ -153,6 +152,6 @@
       </div>
     </template>
 
-    <script type="module" src="./pages/index.js"></script>
+    <!-- <script type="module" src="./pages/index.js"></script> -->
   </body>
 </html>
