@@ -1,8 +1,8 @@
 export default class Card {
-  constructor(initialCards, cardSelector, callbackOpenCardImage) {
-    this._data = initialCards;
+  constructor({ data, handleCardClick }, cardSelector) {
+    this._data = data;
     this._cardSelector = cardSelector;
-    this._callbackOpenCardImage = callbackOpenCardImage;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -35,13 +35,7 @@ export default class Card {
 
   _deleteCard() {
     this._element.remove();
-    this._element = null
-  }
-
-  _handleOpenImage() {
-    this._callbackOpenCardImage(
-      this._element.querySelector(".grid-photo__image")
-    );
+    this._element = null;
   }
 
   _setEventListeners() {
@@ -60,7 +54,9 @@ export default class Card {
     this._element
       .querySelector(".grid-photo__image")
       .addEventListener("click", () => {
-        this._handleOpenImage();
+        this._handleCardClick(
+          this._element.querySelector(".grid-photo__image")
+        );
       });
   }
 }
