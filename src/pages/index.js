@@ -36,8 +36,8 @@ const createCard = (formData) => {
   const card = new Card(
     {
       data: formData,
-      handleCardClick: () => {
-        popupImageObject.open({ data: formData });
+      handleCardClick: (dataCard) => {
+        popupImageObject.open({ data: dataCard });
       },
     },
     gridPhotoTemplate

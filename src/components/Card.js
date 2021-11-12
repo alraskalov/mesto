@@ -38,8 +38,6 @@ export default class Card {
     this._element = null;
   }
 
-  // handleCardClick({ name, link }) {}
-
   _setEventListeners() {
     this._element
       .querySelector(".grid-photo__like")
@@ -56,7 +54,7 @@ export default class Card {
     this._element
       .querySelector(".grid-photo__image")
       .addEventListener("click", () => {
-        this._handleCardClick();
+        this._handleCardClick(this._data);
       });
   }
 }
