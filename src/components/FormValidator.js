@@ -1,7 +1,7 @@
 export default class FormValidator {
-  constructor(config, formSelector) {
+  constructor(config, formElement) {
     this._config = config;
-    this._formElement = formSelector;
+    this._formElement = formElement;
     this._inputLists = Array.from(
       this._formElement.querySelectorAll(this._config.inputSelector)
     );
@@ -11,7 +11,7 @@ export default class FormValidator {
   }
 
   enableValidation() {
-    this._setEventListeners(this._formElement);
+    this._setEventListeners();
   }
 
   _setEventListeners() {
