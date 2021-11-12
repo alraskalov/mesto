@@ -10,6 +10,9 @@ import "./index.css";
 const gridPhoto = ".grid-photo";
 const gridPhotoTemplate = "#grid-photo";
 
+const popupImageLink = ".popup__image";
+const popupImageDescription = ".popup__subtitle";
+
 const formAddCard = document.querySelector(".form-add");
 const formEditProfile = document.querySelector(".form-edit");
 
@@ -42,13 +45,13 @@ const createCard = (formData) => {
     },
     gridPhotoTemplate
   );
-  const cardElement = card.generateCard();
-  cardList.prependItem(cardElement);
+  return card.generateCard();
 };
 
 const popupCardObject = new PopupWithForm(popupAdd, {
   handleFormSubmit: (formData) => {
-    createCard(formData);
+    const cardElement = createCard(formData)
+    cardList.prependItem(cardElement);
     popupCardObject.close();
   },
 });
@@ -71,14 +74,15 @@ const popupProfileObject = new PopupWithForm(popupEdit, {
 
 export const popupImageObject = new PopupWithImage(
   popupImage,
-  ".popup__image",
-  ".popup__subtitle"
+  popupImageLink,
+  popupImageDescription
 );
 
 const cardList = new Section(
   {
     renderer: (item) => {
-      createCard(item);
+      const cardElement = createCard(item)
+      cardList.appendItem(cardElement);
     },
   },
   gridPhoto
