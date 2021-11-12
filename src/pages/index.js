@@ -69,11 +69,14 @@ const popupProfileObject = new PopupWithForm(popupEdit, {
   },
 });
 
-export const popupImageObject = new PopupWithImage(popupImage, ".popup__image", ".popup__subtitle");
+export const popupImageObject = new PopupWithImage(
+  popupImage,
+  ".popup__image",
+  ".popup__subtitle"
+);
 
 const cardList = new Section(
   {
-    items: initialCards,
     renderer: (item) => {
       createCard(item);
     },
@@ -81,7 +84,7 @@ const cardList = new Section(
   gridPhoto
 );
 
-cardList.renderItems();
+cardList.renderItems(initialCards);
 
 popupCardObject.setEventListeners();
 popupProfileObject.setEventListeners();
