@@ -21,7 +21,6 @@
 @import url('../blocks/profile/__edit-button/profile__edit-button.css');
 @import url('../blocks/profile/__add-button/profile__add-button.css');
 
-@import url('../blocks/profile/__add-button/profile__add-button.css');
 
 @import url('../blocks/grid-photo/grid-photo.css');
 @import url('../blocks/grid-photo/__element/grid-photo__element.css');
@@ -29,6 +28,8 @@
 @import url('../blocks/grid-photo/__description/grid-photo__description.css');
 @import url('../blocks/grid-photo/__title/grid-photo__title.css');
 @import url('../blocks/grid-photo/__like/grid-photo__like.css');
+@import url('../blocks/like-counter/like-counter.css');
+@import url('../blocks/like-container/like-container.css');
 @import url('../blocks/grid-photo/__like/_active/grid-photo__like_active.css');
 @import url('../blocks/grid-photo/__delete-button/grid-photo__delete-button.css');
 
@@ -45,6 +46,7 @@
 @import url('../blocks/popup/__input-error/popup__input-error.css');
 @import url('../blocks/popup/__input/_type/popup__input_type_error.css');
 @import url('../blocks/popup/__submit-btn/popup__submit-btn.css');
+@import url('../blocks/delete-button/delete-button.css');
 @import url('../blocks/popup/__submit-btn/_disabled/popup__submit-btn_disabled.css');
 @import url('../blocks/popup/__close-btn/popup__close-btn.css');
 @import url('../blocks/popup/__figure/popup__figure.css');
@@ -58,4 +60,5 @@
 @import url('../blocks/animation-like/animation-like.css');
 @import url('../blocks/animation-button/animation-button.css');
 @import url('../blocks/animation-button-submit/animation-button-submit.css');
+
 

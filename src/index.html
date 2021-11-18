@@ -18,11 +18,8 @@
       <main class="content">
         <section class="profile page__profile">
           <div class="profile__info">
-            <img
-              src="<%=require('./images/avatar.jpg')%>"
-              alt="Аватар"
-              class="profile__avatar"
-            />
+            <div class="profile__avatar"/></div>
+
             <div class="profile__user">
               <h1 class="profile__title">Жак-Ив Кусто</h1>
               <p class="profile__subtitle">Исследователь океана</p>
@@ -120,6 +117,45 @@
           ></button>
         </div>
       </div>
+      <div class="popup popup-delete">
+        <div class="popup__container">
+          <h2 class="popup__title">Вы уверены?</h2>
+          <button type="submit" class="popup__submit-btn delete-button">
+            Да
+          </button>
+          <button
+            type="button"
+            class="popup__close-btn animation-button"
+          ></button>
+        </div>
+      </div>
+
+      <div class="popup popup-avatar">
+        <div class="popup__container">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <form name="edit" class="popup__form form-avatar" novalidate>
+            <fieldset class="popup__fieldset">
+              <label class="popup__label">
+                <input
+                  class="popup__input popup__input-avatar"
+                  id="avatar-link"
+                  type="url"
+                  name="link"
+                  placeholder="Ссылка на картинку"
+                  required
+                />
+                <span class="popup__input-error avatar-link-error"></span>
+              </label>
+              <button type="submit" class="popup__submit-btn">Сохранить</button>
+            </fieldset>
+          </form>
+          <button
+            type="button"
+            class="popup__close-btn animation-button"
+          ></button>
+        </div>
+      </div>
+
       <div class="popup popup-image">
         <div class="popup__container popup__container-image">
           <figure class="popup__figure">
@@ -143,10 +179,13 @@
         ></button>
         <div class="grid-photo__description">
           <h2 class="grid-photo__title"></h2>
-          <button
+          <div class="like-container">
+            <button
             type="button"
             class="grid-photo__like animation-like"
           ></button>
+          <p class="like-counter">6</p>
+          </div>
         </div>
       </div>
     </template>
