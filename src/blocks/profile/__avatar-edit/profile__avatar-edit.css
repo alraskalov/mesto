@@ -1,4 +1,5 @@
 .profile__avatar-edit {
+  cursor: pointer;
   border: 0;
   background: none;
   position: absolute;

@@ -29,6 +29,7 @@ const jobInput = document.querySelector("#user-job");
 const userName = document.querySelector(".profile__title");
 const userAbout = document.querySelector(".profile__subtitle");
 const userAvatar = document.querySelector(".profile__avatar");
+const userAvatarButton = document.querySelector(".profile__avatar-edit");
 
 const popupAdd = document.querySelector(".popup-add");
 const popupImage = document.querySelector(".popup-image");
@@ -230,7 +231,7 @@ popupAvatarObject.setEventListeners();
 popupDeleteCardObject.setEventListeners();
 
 // Слушатели кнопок
-userAvatar.addEventListener("click", () => {
+userAvatarButton.addEventListener("click", () => {
   formProfileAvatarObject.toggleButtonState();
   formProfileAvatarObject.clearValidation();
   popupAvatarObject.open();
