@@ -1,4 +1,5 @@
 .grid-photo__delete-button {
+  display: none;
   background: url('../../../images/trash.svg');
   position: absolute;
   width: 19px;

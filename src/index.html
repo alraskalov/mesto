@@ -18,11 +18,18 @@
       <main class="content">
         <section class="profile page__profile">
           <div class="profile__info">
-            <div class="profile__avatar"/></div>
+            <div class="avatar-container">
+              <img
+                src="<%=require('./images/avatar.jpg')%>"
+                alt="Аватар"
+                class="profile__avatar"
+              />
+              <button class="profile__avatar-edit"></button>
+            </div>
 
             <div class="profile__user">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <p class="profile__subtitle">Исследователь океана</p>
+              <h1 class="profile__title"></h1>
+              <p class="profile__subtitle"></p>
               <button
                 class="profile__edit-button animation-button"
                 type="button"
@@ -39,6 +46,7 @@
       <footer class="footer page__footer">
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
       </footer>
+
       <div class="popup popup-edit">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
@@ -70,7 +78,16 @@
                 />
                 <span class="popup__input-error user-job-error"></span>
               </label>
-              <button type="submit" class="popup__submit-btn">Сохранить</button>
+              <button type="submit" class="popup__submit-btn">
+                <span
+                  class="popup__submit-btn-text popup__submit-btn-text_initial"
+                  >Сохранить</span
+                >
+                <span
+                  class="popup__submit-btn-text popup__submit-btn-text_loading"
+                  >Сохранение...</span
+                >
+              </button>
             </fieldset>
           </form>
           <button
@@ -79,6 +96,7 @@
           ></button>
         </div>
       </div>
+
       <div class="popup popup-add">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
@@ -108,7 +126,16 @@
                 />
                 <span class="popup__input-error image-link-error"></span>
               </label>
-              <button type="submit" class="popup__submit-btn">Создать</button>
+              <button type="submit" class="popup__submit-btn">
+                <span
+                  class="popup__submit-btn-text popup__submit-btn-text_initial"
+                  >Сохранить</span
+                >
+                <span
+                  class="popup__submit-btn-text popup__submit-btn-text_loading"
+                  >Сохранение...</span
+                >
+              </button>
             </fieldset>
           </form>
           <button
@@ -117,12 +144,22 @@
           ></button>
         </div>
       </div>
+
       <div class="popup popup-delete">
         <div class="popup__container">
           <h2 class="popup__title">Вы уверены?</h2>
-          <button type="submit" class="popup__submit-btn delete-button">
-            Да
-          </button>
+          <form name="delete" class="popup__form form-delete" novalidate>
+            <button type="submit" class="popup__submit-btn delete-button">
+              <span
+                class="popup__submit-btn-text popup__submit-btn-text_initial"
+                >Да</span
+              >
+              <span
+                class="popup__submit-btn-text popup__submit-btn-text_loading"
+                >Удаление...</span
+              >
+            </button>
+          </form>
           <button
             type="button"
             class="popup__close-btn animation-button"
@@ -133,7 +170,7 @@
       <div class="popup popup-avatar">
         <div class="popup__container">
           <h2 class="popup__title">Обновить аватар</h2>
-          <form name="edit" class="popup__form form-avatar" novalidate>
+          <form name="avatar" class="popup__form form-avatar" novalidate>
             <fieldset class="popup__fieldset">
               <label class="popup__label">
                 <input
@@ -146,7 +183,16 @@
                 />
                 <span class="popup__input-error avatar-link-error"></span>
               </label>
-              <button type="submit" class="popup__submit-btn">Сохранить</button>
+              <button type="submit" class="popup__submit-btn">
+                <span
+                  class="popup__submit-btn-text popup__submit-btn-text_initial"
+                  >Сохранить</span
+                >
+                <span
+                  class="popup__submit-btn-text popup__submit-btn-text_loading"
+                  >Сохранение...</span
+                >
+              </button>
             </fieldset>
           </form>
           <button
@@ -181,10 +227,10 @@
           <h2 class="grid-photo__title"></h2>
           <div class="like-container">
             <button
-            type="button"
-            class="grid-photo__like animation-like"
-          ></button>
-          <p class="like-counter">6</p>
+              type="button"
+              class="grid-photo__like animation-like"
+            ></button>
+            <p class="like-counter">6</p>
           </div>
         </div>
       </div>
