@@ -8,7 +8,7 @@ export default class Api {
     return fetch(`${this._url}/cards`, {
       method: "GET",
       headers: this._headers,
-    }).then(this._getResponse);
+    }).then(res => this._getResponse(res));
   }
 
   addCard(data) {
@@ -16,21 +16,21 @@ export default class Api {
       method: "POST",
       headers: this._headers,
       body: JSON.stringify(data),
-    }).then(this._getResponse);
+    }).then(res => this._getResponse(res));
   }
 
   deleteCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
-    }).then(this._getResponse);
+    }).then(res => this._getResponse(res));
   }
 
   getUserInfo() {
     return fetch(`${this._url}/users/me`, {
       method: "GET",
       headers: this._headers,
-    }).then(this._getResponse);
+    }).then(res => this._getResponse(res));
   }
 
   setUserInfo(userName, userAbout) {
@@ -41,7 +41,7 @@ export default class Api {
         name: userName,
         about: userAbout,
       }),
-    }).then(this._getResponse);
+    }).then(res => this._getResponse(res));
   }
 
   setUserAvatar(userAvatar) {
@@ -51,7 +51,7 @@ export default class Api {
       body: JSON.stringify({
         avatar: userAvatar,
       }),
-    }).then(this._getResponse);
+    }).then(res => this._getResponse(res));
   }
 
   changeLikeCard(cardId, isLiked) {
